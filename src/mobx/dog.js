@@ -52,7 +52,6 @@ const dogInfoList = types
     })
     .views(self => ({
         filter(breed, gender, location) {
-            console.log(breed)
             return breed !== "" ? self.infoList.filter(x => x.breed.toLowerCase().includes(breed.toLowerCase())) :
                 gender !== "" ? self.infoList.filter(x => x.gender === gender) :
                 location !== "" ? self.infoList.filter(x => x.location.toLowerCase() === location.toLowerCase()) : self.infoList

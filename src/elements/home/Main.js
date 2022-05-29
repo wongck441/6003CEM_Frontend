@@ -19,7 +19,6 @@ import { observer } from 'mobx-react-lite'
 import { loginout } from '../../mobx/account';
 
 import { getDogs } from '../../axios/dogAPI';
-import { set } from 'mobx';
 
 
 export default observer(() => {

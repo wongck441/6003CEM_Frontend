@@ -120,7 +120,7 @@ const Register = () => {
                             label="Register as a Charity Worker"
                             onChange={(e) => setAsWorker(e.target.value)}
                         >
-                            <MenuItem value="yea">Yes</MenuItem>
+                            <MenuItem value="yes">Yes</MenuItem>
                             <MenuItem value="no">No</MenuItem>
                         </Select>
                     </FormControl>
