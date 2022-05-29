@@ -23,7 +23,7 @@ export default observer(() => {
     const [wait, setWait] = React.useState(false)
     const [name, setName] = React.useState("")
     const [breed, setBreed] = React.useState("")
-    const [birthday, setBirthday] = React.useState("")
+    const [dob, setdob] = React.useState("")
     const [gender, setGender] = React.useState("")
     const [location, setLocation] = React.useState("")
     const [description, setDescription] = React.useState("")
@@ -102,12 +102,12 @@ export default observer(() => {
             // id should be created in backend
             name: name,
             breed: breed,
-            birthday: birthday,
+            dob: dob,
             gender: gender,
             location: location,
             description: description,
             image: image,
-            apiToken: loginout.getAPItoken()
+            token: loginout.getAPItoken()
         }).then(() => {
             setTimeout(() => {
                 setWait(false)
@@ -163,8 +163,8 @@ export default observer(() => {
                                 disabled={wait}
                                 label="Birthday"
                                 style={{ width: '100%' }}
-                                value={birthday}
-                                onChange={(e) => setBirthday(e.target.value)}
+                                value={dob}
+                                onChange={(e) => setdob(e.target.value)}
                             />
                         </Grid>
                         <Grid item xs={6}>
@@ -188,7 +188,7 @@ export default observer(() => {
                                 :
                                 <Button variant="contained" onClick={onEdit}
                                     disabled={
-                                        name === "" || breed === "" || birthday === "" || gender === "" ||
+                                        name === "" || breed === "" || dob === "" || gender === "" ||
                                         location === "" || description === "" || image === ""
                                     }
                                 >

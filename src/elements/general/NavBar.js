@@ -17,7 +17,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { loginout } from '../../mobx/account';
 
-const NavBar = () => {
+export default observer(() => {
     const pusher = useNavigate()
     const [wait, setWait] = React.useState("")
 
@@ -70,6 +70,4 @@ const NavBar = () => {
             </AppBar>
         </Box>
     );
-}
-
-export default observer(NavBar) 
+})

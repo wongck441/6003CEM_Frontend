@@ -62,8 +62,8 @@ const DogInfoCard = (info) => {
     const DeleteButton = () => {
         const onEdit = () => {
             deleteDog({
-                data: infoData.id,
-                apiToken: loginout.getAPItoken()
+                id: infoData.id,
+                token: loginout.getAPItoken()
             })
             dogInfoList.deleteDogData(info.index)
         }

@@ -23,7 +23,7 @@ export default observer(() => {
     const [wait, setWait] = React.useState(false)
     const [name, setName] = React.useState(editDogInfo.name)
     const [breed, setBreed] = React.useState(editDogInfo.breed)
-    const [birthday, setBirthday] = React.useState(editDogInfo.dob)
+    const [dob, setdob] = React.useState(editDogInfo.dob)
     const [gender, setGender] = React.useState(editDogInfo.gender)
     const [location, setLocation] = React.useState(editDogInfo.location)
     const [description, setDescription] = React.useState(editDogInfo.description)
@@ -99,16 +99,17 @@ export default observer(() => {
 
     const onEdit = () => {
         setWait(true)
+        console.log(JSON.stringify(editDogInfo))
         editDog({
             id: editDogInfo.id,
             name: name,
             breed: breed,
-            birthday: birthday,
+            dob: dob,
             gender: gender,
             location: location,
             description: description,
             image: image,
-            apiToken: loginout.getAPItoken()
+            token: loginout.getAPItoken()
         }).then(() => {
             setTimeout(() => {
                 setWait(false)
@@ -154,10 +155,10 @@ export default observer(() => {
                         <Grid item xs={6}>
                             <TextField
                                 disabled={wait}
-                                label="Birthday"
+                                label="dob"
                                 style={{ width: '100%' }}
-                                value={birthday}
-                                onChange={(e) => setBirthday(e.target.value)}
+                                value={dob}
+                                onChange={(e) => setdob(e.target.value)}
                             />
                         </Grid>
                         <Grid item xs={6}>

@@ -26,13 +26,33 @@ const Login = () => {
         setPwd("")
     };
 
+    const encrypt = (password) => {
+        let letter = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+            "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2",
+            "3", "4", "5", "6", "7", "8", "9", "0"]
+
+        let pwdArray = password.split("").map(x => `${x}`)
+        let pwdIndexArray = pwdArray.map((x) => {
+            let li = letter.findIndex(l => l === x) + 5
+            return li > letter.length - 1 ? li - letter.length - 1 : li
+        })
+
+        let result = pwdIndexArray.map(x => letter[x])
+        return result.join("")
+    }
+
     const handleLogin = () => {
         loginAPI({
             username: user,
-            password: pwd
-        }).then(() => {
-            handleClose()
-            pusher("/")
+            password: encrypt(pwd)
+        }).then((x) => {
+            if (x) {
+                handleClose()
+                pusher("/")
+            } else {
+                alert("Incorrect password/username")
+                setPwd("")
+            }
         })
     }
 

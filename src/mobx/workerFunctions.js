@@ -2,6 +2,7 @@ import { types } from 'mobx-state-tree'
 
 const editDogInfo = types
     .model({
+        id: types.number,
         name: types.string,
         breed: types.string,
         dob: types.string,
@@ -12,6 +13,7 @@ const editDogInfo = types
     })
     .actions(self => ({
         setData(data) {
+            self.id = data.id
             self.name = data.name
             self.breed = data.breed
             self.dob = data.dob
@@ -22,6 +24,7 @@ const editDogInfo = types
         }
     }))
     .create({
+        id: -1,
         name: "",
         breed: "",
         dob: "",

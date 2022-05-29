@@ -8,7 +8,7 @@ const loginout = types
     })
     .views(self => ({
         isCharityWorker() {
-            return self.type === "charity worker"
+            return self.type === "charity_worker"
         },
         isLogedIn() {
             return self.name !== "" && self.type !== ""
@@ -22,9 +22,15 @@ const loginout = types
     }))
     .actions(self => ({
         setLogin(data) {
-            self.name = data.name
-            self.type = data.type
-            self.apiToken = data.apiToken
+            self.name = data[0].username
+            self.type = data[0].usertype === null ? "_" : data[0].usertype
+            self.apiToken = data[0].token === null ? "_" : data[0].token
+
+            console.log({
+                name: self.name,
+                type: self.type,
+                token: self.apiToken
+            })
         },
         setLogout() {
             self.name = ""
@@ -33,9 +39,9 @@ const loginout = types
         }
     }))
     .create({
-        name: "alex",
-        type: "charity worker",
-        apiToken: "AAAAAAAAAKKKKKKKKKEOA"
+        name: "",
+        type: "",
+        apiToken: ""
     })
 
 export { loginout }

@@ -4,7 +4,7 @@ import { dogInfoList } from "../mobx/dog";
 const getDogs = () => {
     return request("get", "/dog/getList").then((response) => {
         console.log(response)
-        dogInfoList.fillList(response.data[1])
+        dogInfoList.fillList(response.data)
     })
 }
 
@@ -23,7 +23,7 @@ const editDog = (data) => {
 }
 
 const deleteDog = (data) => {
-    return request("post", "/dog/delete", data).then((response) => {
+    return request("postget", `/dog/remove`, data).then((response) => {
         getDogs()
 
     })

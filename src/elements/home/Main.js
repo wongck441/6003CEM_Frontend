@@ -22,11 +22,11 @@ import { getDogs } from '../../axios/dogAPI';
 import { set } from 'mobx';
 
 
-const Home = () => {
+export default observer(() => {
     const pusher = useNavigate()
     React.useEffect(() => {
         getDogs()
-    })
+    }, [])
 
     const [gender, setGender] = React.useState("")
     const [location, setLocation] = React.useState("")
@@ -127,6 +127,4 @@ const Home = () => {
             </Grid>
         </div>
     );
-}
-
-export default observer(Home)
+})
